@@ -12,7 +12,7 @@ const routes: Routes = [
 
 bootstrapApplication(AppComponent, {
   providers: [
-    provideRouter(routes), provideAnimationsAsync()  // Configure routing
+    provideRouter(routes), provideAnimationsAsync(), provideAnimationsAsync(), provideAnimationsAsync()  // Configure routing
   ]
 })
 .catch(err => console.error(err));
