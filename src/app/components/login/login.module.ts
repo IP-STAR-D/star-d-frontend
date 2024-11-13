@@ -8,6 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatFormField } from '@angular/material/form-field';
+import { StudentComponent } from '../user/student/student.component';
+import { Router } from 'express';
 
 
 const routes: Routes = [
@@ -24,10 +26,13 @@ const routes: Routes = [
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule, // Import MatFormFieldModule here
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    StudentComponent
+    
     
     
 ],
+exports:[StudentComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class LoginModule { }
