@@ -4,13 +4,16 @@ import { StudentComponent } from './components/user/student/student.component';
 import { AdminComponent } from './components/user/admin/admin.component';
 import { ProfessorComponent } from './components/user/professor/professor.component';
 import { UserComponent } from './components/user/user.component';
+import { ExamsComponent } from './components/exams/exams.component';
 
 export const routes: Routes = [
-  { path: 'login', component: LoginComponent },  // Configure the route for login
-  { path: 'user/student', component: StudentComponent},
-  { path: 'user/professor', component: ProfessorComponent},
-  { path: 'user/admin', component: AdminComponent},
-  { path: 'user', component: UserComponent},
-  { path: '', redirectTo: '/login', pathMatch: 'full' },  // Ruta principală
-  { path: '**', redirectTo: '/login' }, // Redirect any unknown paths to login
+  { path: 'login', component: LoginComponent },
+  { path: 'user', component: UserComponent, children: [
+    { path: 'student', component: StudentComponent},
+    { path: 'professor', component: ProfessorComponent},
+    { path: 'admin', component: AdminComponent}
+  ]},
+  { path: 'exams', component: ExamsComponent},
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', redirectTo: '/login' },
 ];
