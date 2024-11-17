@@ -1,14 +1,18 @@
-<div class="centered-text">
-  <h1>Login to your account</h1>
+<div class="login-form">
+  <h2>Login</h2>
+
+  <!-- Form field for Username -->
+  <div class="form-group">
+    <label for="username">Utilizator</label>
+    <input type="text" id="username" class="form-control" required />
+  </div>
+
+  <!-- Form field for Password -->
+  <div class="form-group">
+    <label for="password">Parola</label>
+    <input type="password" id="password" class="form-control" required />
+  </div>
+
+  <!-- Login button -->
+  <button class="btn btn-primary" (click)="login()">Login</button>
 </div>
-
-<form class="example-form">
-  <form class="example-full-width">
-    <label>Email</label>
-    <input placeholder="email" />
-    <label>Parola</label>
-    <input placeholder="parola" />
-  </form>
-
-  <button (click)="redirectToAnotherPage()">Submit</button>
-</form>
