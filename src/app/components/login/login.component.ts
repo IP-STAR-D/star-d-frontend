@@ -1,34 +1,30 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
-
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent {
-  loginForm: FormGroup;
+  username: string = '';
+  password: string = '';
 
-  constructor(private fb: FormBuilder,private router:Router) {
-    this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
-    });
-  }
-    redirectToAnotherPage() {
-      this.router.navigate(['/user/student']);  // sau alt URL din aplicație
-    }
-   
-  
+  constructor(private authService: AuthService, private router: Router) {}
 
-  
-
-  onSubmit() {
-    if (this.loginForm.valid) {
-      console.log('Form Submitted', this.loginForm.value);
+  login() {
+    if (this.authService.login(this.username, this.password)) {
+      // Dacă autentificarea este reușită, redirectăm utilizatorul
+      const user = this.authService.getUser();
+      if (user.role === 'student') {
+        this.router.navigate(['/student']);
+      } else if (user.role === 'professor') {
+        this.router.navigate(['/professor']);
+      }
+    } else {
+      alert('Autentificare eșuată!');
     }
   }
 }

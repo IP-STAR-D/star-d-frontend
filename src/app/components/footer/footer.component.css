@@ -1,13 +1,21 @@
+/* Stiluri de bază pentru navbar */
 .navbar {
-  background-color: rgb(25, 32, 65, 1);
-  height: 120px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  margin-top: 110px;
+  justify-content: center; /* Centrare logo */
+  background-color: rgb(25, 32, 65, 1);
+  padding: 10px 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.navbar-logo {
-  height: 120px;
-  width: auto;
+p {
+  color: white;
+}
+
+/* Media query pentru ecrane mici */
+@media (max-width: 768px) {
+  .navbar {
+    justify-content: space-between; /* Poziționare diferită dacă adaugi alte elemente */
+    padding: 10px;
+  }
 }
